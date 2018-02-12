@@ -1,8 +1,7 @@
 		
 		var words = ["Final Fantasy", "Halo", "Zelda"];
 		var wins = 0;
-		var missCount = 0; 		
-//		var guessedLetters = 
+		var missCount = 0; 	
 
 		document.onkeyup = function(event)	{
 		
@@ -10,14 +9,19 @@
 			var userGuess = event.key;
 
 			addLetter(userGuess);
+
+		//function loop where the user input is checked against the chosenWord
+			function checkInput () {
+				if (userGuess === choiceToArray) {
+					console.log("Great guess!")
+				} else {
+					console.log("Nice try, but no cigar!")
+				};
+			};	
+
+			checkInput(userGuess);
+
 		}
-/*
-takes a string and creates an array
-var str = 'abcdefg';
-var ar = str.split(''); // empty string separator
-console.log( ar ); // [ "a", "b", "c", "d", "e", "f", "g" ]
-//need to add a query selector to the html above or figure out another display method */
-		
 
 		//gets the computer to choose a random word from the array above
 			var chosenWord = words[Math.floor(Math.random() * words.length)];
@@ -26,16 +30,23 @@ console.log( ar ); // [ "a", "b", "c", "d", "e", "f", "g" ]
 		//takes the computer's choice and converts it to an array	
 			var choiceToArray = chosenWord.split('');
 			console.log(choiceToArray);
+
+			var wordLength = choiceToArray.length;
+			console.log(wordLength);
+
 		//empty array where user's guessed letters will be placed
 			var guessedLetters = [];
 
-
+		//pushes a letter to the above array
 			function addLetter (letter) {
 				guessedLetters.push (letter)
 				console.log("letters guessed: " + guessedLetters)
 			};
 
+
+
              var html = "<p>Wins: " + wins + "</p>" +
-                        "<p>Misses: " + missCount + "<p>";
+                        "<p>Misses: " + missCount + "<p>" +
+                        "<p>Word length: " + chosenWord.length + "</p>";
              
              document.querySelector("#results").innerHTML = html;
