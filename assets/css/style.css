@@ -1,0 +1,13 @@
+.left-side {
+	border: solid;
+	border-color: black;
+	border-width: 5px;
+	height: 400px;
+}
+
+.right-side {
+	border: solid;
+	border-color: black;
+	border-width: 5px;
+	height: 400px;
+}
